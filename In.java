@@ -313,7 +313,7 @@ public final class In {
         String result = scanner.useDelimiter(EVERYTHING_PATTERN).next();
         // not that important to reset delimeter, since now scanner is empty
         scanner.useDelimiter(WHITESPACE_PATTERN); // but let's do it anyway
-        return result;
+        return result; 
     }
 
 
