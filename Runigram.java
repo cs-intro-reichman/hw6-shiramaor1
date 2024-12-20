@@ -127,7 +127,7 @@ public class Runigram {
 		Color [][] newImage = new Color[numRows][numCols];
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numRows; j++) {
-				newImage [i][j] = (image [i][j]);
+				newImage [i][j] = luminance(image [i][j]);
 			}
 		}	
 
@@ -205,10 +205,7 @@ public class Runigram {
 			}
 
 		for (int i = 0; i <= n; i++) {
-			double alpha = (n - (double) i) / n;
-			Color [][] blendImage = blend(source, target, alpha);
-			Runigram.display(blendImage);
-			StdDraw.pause(500);
+			display(blend(source, target, (double) (n - i) / (double) n));
 		}
 	}
 	
