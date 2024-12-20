@@ -111,6 +111,9 @@ public class Runigram {
 	// lum = 0.299 * r + 0.587 * g + 0.114 * b, and returns a Color object consisting
 	// the three values r = lum, g = lum, b = lum.
 	private static Color luminance(Color pixel) {
+		if (pixel == null) {
+			return null;
+		}
 		int r = pixel.getRed();
 		int g = pixel.getGreen();
 		int b = pixel.getBlue();
@@ -127,6 +130,9 @@ public class Runigram {
 		Color [][] newImage = new Color[numRows][numCols];
 		for (int i = 0; i < numRows; i++) {
 			for (int j = 0; j < numRows; j++) {
+				if (image[i][j] == null) {
+					return null; 
+				}
 				newImage [i][j] = luminance(image [i][j]);
 			}
 		}	
@@ -162,6 +168,9 @@ public class Runigram {
 	 * values in the two input color.
 	 */
 	public static Color blend(Color c1, Color c2, double alpha) {
+		if (c1 == null || c2 == null) {
+			return null;
+		}
 		int r = (int) (alpha * c1.getRed() + (1 - alpha) * c2.getRed());
 		int g = (int) (alpha * c1.getGreen() + (1 - alpha) * c2.getGreen());
 		int b = (int) (alpha * c1.getBlue() + (1 - alpha) * c2.getBlue());
@@ -176,6 +185,12 @@ public class Runigram {
 	 * The two images must have the same dimensions.
 	 */
 	public static Color[][] blend(Color[][] image1, Color[][] image2, double alpha) {
+		if (image1 == null || image2 == null) {
+			return null;
+		}
+		if (image1.length != image2.length || image1[0].length != image2[0].length) {
+			return null;
+		}
 		int numRows = image1.length; 
 		int numCols = image1[0].length;
 		Color [][] newImage = new Color[numRows][numCols];
